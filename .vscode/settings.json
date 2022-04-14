@@ -27,7 +27,5 @@
     "**/.vscode",
     "**/.vscode/**"
   ],
-  "workbench.colorCustomizations": {
-  
-  }
+  "workbench.colorCustomizations": {}
 }
