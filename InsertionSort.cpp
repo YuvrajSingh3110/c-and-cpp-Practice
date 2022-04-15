@@ -21,7 +21,7 @@ arr[j+1]=arr[j];
 }
 else{
     break;
-}}
+}} 
 arr[j+1] = temp;
 
     }
