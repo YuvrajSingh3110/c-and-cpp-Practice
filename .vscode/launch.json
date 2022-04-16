@@ -7,13 +7,13 @@
       "request": "launch",
       "args": [],
       "stopAtEntry": false,
-      "cwd": "e:/C and C++ Practice",
+      "cwd": "e:/C and C++ Practice/QuestionsOnArray",
       "environment": [],
-      "program": "e:/C and C++ Practice/build/Debug/outDebug",
+      "program": "e:/C and C++ Practice/QuestionsOnArray/build/Debug/outDebug",
       "internalConsoleOptions": "openOnSessionStart",
       "MIMode": "gdb",
       "miDebuggerPath": "C:/MinGW/bin/gdb.exe",
-      "externalConsole": false,
+      "console": "integratedTerminal",
       "setupCommands": [
         {
           "description": "Enable pretty-printing for gdb",
