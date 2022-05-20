@@ -69,6 +69,7 @@
     "sstream": "cpp",
     "stdexcept": "cpp",
     "streambuf": "cpp",
-    "typeinfo": "cpp"
+    "typeinfo": "cpp",
+    "Assign5Q3.C": "cpp"
   }
 }

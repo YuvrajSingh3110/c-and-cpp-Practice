@@ -10,7 +10,7 @@ void main(){
         printf("m is multiple of n");
     }
     else
-            printf("m is not a multiple of n");
+        printf("m is not a multiple of n");
 
     
 }
