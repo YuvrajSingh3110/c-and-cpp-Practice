@@ -1,25 +1,25 @@
 #include<iostream>
 using namespace std;
-#include<math.h>
 
-int main(){
-    int arr[10],n;
-    cin>>n;
-    cout<<"enter array";
-    for(int i=0; i<n; i++){
-        cin>>arr[i];
+class B{
+    public:
+    int a;
+    int b;
+
+    void operator+ (B &obj){
+        int value2 = this -> a;
+        int value1 = obj.a;
+        cout<<value2 - value1<<endl;
     }
 
-    for(int i=0;i<n; i++) {
-        cout<<"hello"<<endl;
-    
-    for(int j=0;j<n; j++){
-        cout<<"hello returns"<<endl;
-    
-        for(int k=0;k<n; k++){
-            cout<<i<<" "<<j<<" "<<k<<" "<<endl;
+};
 
-        }}}
+int main(){
+   B obj1, obj2;
+   obj1.a=4;
+   obj2.a=7;
+
+   obj1 + obj2;
 
 return 0;
 }

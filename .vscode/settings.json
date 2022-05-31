@@ -71,5 +71,6 @@
     "streambuf": "cpp",
     "typeinfo": "cpp",
     "Assign5Q3.C": "cpp"
-  }
+  },
+  "C_Cpp_Runner.useMsvc": false
 }

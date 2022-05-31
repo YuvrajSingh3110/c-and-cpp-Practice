@@ -7,13 +7,11 @@
       "request": "launch",
       "args": [],
       "stopAtEntry": false,
-      "cwd": "e:/C and C++ Practice/C Programs",
-      "environment": [],
-      "program": "e:/C and C++ Practice/C Programs/build/Debug/outDebug",
-      "internalConsoleOptions": "openOnSessionStart",
+      "externalConsole": false,
+      "cwd": "e:/C and C++ Practice/Recursion",
+      "program": "e:/C and C++ Practice/Recursion/build/Debug/outDebug",
       "MIMode": "gdb",
       "miDebuggerPath": "C:/MinGW/bin/gdb.exe",
-      "console": "integratedTerminal",
       "setupCommands": [
         {
           "description": "Enable pretty-printing for gdb",
