@@ -8,8 +8,8 @@
       "args": [],
       "stopAtEntry": false,
       "externalConsole": false,
-      "cwd": "e:/C and C++ Practice/Recursion",
-      "program": "e:/C and C++ Practice/Recursion/build/Debug/outDebug",
+      "cwd": "e:/C and C++ Practice/C Programs/Assignment 9",
+      "program": "e:/C and C++ Practice/C Programs/Assignment 9/build/Debug/outDebug",
       "MIMode": "gdb",
       "miDebuggerPath": "C:/MinGW/bin/gdb.exe",
       "setupCommands": [
