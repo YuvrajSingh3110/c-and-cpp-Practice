@@ -147,7 +147,6 @@ class node {
         temp->next = NULL;
     }
 
-
 int main(){
     
     //creating a new node
