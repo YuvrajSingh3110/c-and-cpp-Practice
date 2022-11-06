@@ -42,9 +42,15 @@ void quicksort(int *arr, int s, int e){
 }
 
 int main(){
-    int arr[5]={3,1,4,5,2};
-    int n=5;
+    int n;
+    cin>>n;
+    int arr[n];
+    for (int i = 0; i < n; i++)
+    {
+        cin>>arr[i];
+    }
     quicksort(arr,0,n-1);
+    cout<<"After sorting "<<endl;
     for (int i = 0; i < n; i++)
     {
         cout<<arr[i]<<" ";

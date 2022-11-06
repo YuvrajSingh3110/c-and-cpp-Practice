@@ -7,9 +7,9 @@
       "request": "launch",
       "args": [],
       "stopAtEntry": false,
-      "externalConsole": false,
-      "cwd": "e:/C++ Practice/Linked List",
-      "program": "e:/C++ Practice/Linked List/build/Debug/outDebug",
+      "externalConsole": true,
+      "cwd": "e:/C++ Practice",
+      "program": "e:/C++ Practice/build/Debug/outDebug",
       "MIMode": "gdb",
       "miDebuggerPath": "C:/MinGW/bin/gdb.exe",
       "setupCommands": [
