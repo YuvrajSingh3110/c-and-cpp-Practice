@@ -133,7 +133,7 @@ class node {
     
     node* sort(node* &head){
         if(head == NULL || head->next == NULL){
-            return;
+            return NULL;
         }
         
         node* s = split(head);
