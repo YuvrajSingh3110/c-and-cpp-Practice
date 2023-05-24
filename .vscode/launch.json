@@ -8,8 +8,8 @@
       "args": [],
       "stopAtEntry": false,
       "externalConsole": true,
-      "cwd": "e:/C++ Practice",
-      "program": "e:/C++ Practice/build/Debug/outDebug",
+      "cwd": "c:/Coding practice/Golang",
+      "program": "c:/Coding practice/Golang/build/Debug/outDebug",
       "MIMode": "gdb",
       "miDebuggerPath": "C:/MinGW/bin/gdb.exe",
       "setupCommands": [
