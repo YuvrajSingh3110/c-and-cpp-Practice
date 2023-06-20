@@ -4,36 +4,39 @@ import (
 	"fmt"
 	"io/ioutil"
 	"net/http"
+	"net/url"
 	"strings"
 )
 
 func main() {
 	//PerformGetRequest()
-	PerformPostJsonRequest()
+	//PerformPostJsonRequest()
+	PerformPostFormRequest()
 }
-// func PerformGetRequest() {
-// 	// const myUrl = "http://localhost:8000/get"
 
-// 	// response, err := http.Get(myUrl)
-// 	// if err != nil {
-// 	// 	panic(err)
-// 	// }
+func PerformGetRequest() {
+	const myUrl = "http://localhost:8000/get"
 
-// 	// defer response.Body.Close()
+	response, err := http.Get(myUrl)
+	if err != nil {
+		panic(err)
+	}
 
-// 	// fmt.Println("Status code: ", response.StatusCode)
-// 	// fmt.Println("Content length: ", response.ContentLength)
+	defer response.Body.Close()
 
-// 	// var responseString strings.Builder
-// 	// //alternatively we can also use strings library which is considered very strong
-// 	// content, _ := ioutil.ReadAll(response.Body)
-// 	// byteCnt ,_ := responseString.Write(content) 
-// 	// //through responseString we are having the raw data all the time which is very useful
-// 	// fmt.Println("Byte count: ",byteCnt)
-// 	// fmt.Println(responseString.String())
+	fmt.Println("Status code: ", response.StatusCode)
+	fmt.Println("Content length: ", response.ContentLength)
 
-// 	// //println(string(content))
-// }
+	var responseString strings.Builder
+	//alternatively we can also use strings library which is considered very strong
+	content, _ := ioutil.ReadAll(response.Body)
+	byteCnt ,_ := responseString.Write(content) 
+	//through responseString we are having the raw data all the time which is very useful
+	fmt.Println("Byte count: ",byteCnt)
+	fmt.Println(responseString.String())
+
+	//println(string(content))
+}
 
 func PerformPostJsonRequest(){
 	const myUrl = "http://localhost:8000/post"
@@ -58,4 +61,23 @@ func PerformPostJsonRequest(){
 		panic(err)
 	}
 	fmt.Println(string(content))
+}
+
+
+func PerformPostFormRequest() {
+	const myUrl = "http://localhost:8000/postform"
+
+	//formdata
+	data := url.Values{}
+	data.Add("name", "Yato")
+	data.Add("age", "21")
+
+	response, err := http.PostForm(myUrl, data)
+	if err != nil {
+		panic(err)
+	}
+
+	content, _ := ioutil.ReadAll(response.Body)
+	fmt.Println(string(content))
+	defer response.Body.Close()
 }
