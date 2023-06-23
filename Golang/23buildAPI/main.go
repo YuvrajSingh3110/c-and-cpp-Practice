@@ -3,6 +3,7 @@ package main
 import (
 	"encoding/json"
 	"fmt"
+	"log"
 	"math/rand"
 	"net/http"
 	"strconv"
@@ -34,7 +35,39 @@ func (c *Course) IsEmpty() bool {
 }
 
 func main() {
+	fmt.Println("API")
+	r := mux.NewRouter()
 
+	//seeding
+	courses = append(courses, Course{
+		CourseId: "3",
+		CourseName: "Flutter",
+		CoursePrice: 699,
+		Author: &Author{
+			Fullname: "Yuvraj Singh",
+			Website: "learnflutter.com",
+		},
+	})
+	courses = append(courses, Course{
+		CourseId: "4",
+		CourseName: "Android",
+		CoursePrice: 499,
+		Author: &Author{
+			Fullname: "Yuvraj Singh",
+			Website: "learnandroid.com",
+		},
+	})
+
+	//routing
+	r.HandleFunc("/", serveHome).Methods("GET")
+	r.HandleFunc("/courses", getAllCourses).Methods("GET")
+	r.HandleFunc("/course/{id}", getOneCourse).Methods("GET")
+	r.HandleFunc("/course", createOneCourse).Methods("POST")
+	r.HandleFunc("/course/{id}", updateOneCourse).Methods("PUT")
+	r.HandleFunc("/course/{id}", deleteOneCourse).Methods("DELETE")
+
+	//listen to a port
+	log.Fatal(http.ListenAndServe(":4000",r))
 }
 
 //controllers - file
@@ -84,6 +117,13 @@ func createOneCourse(w http.ResponseWriter, r *http.Request) {
 		json.NewEncoder(w).Encode("No data inside JSON")
 		return
 	}
+
+	// //check if title is already present
+	// for _,course := range courses {
+	// 	if course.CourseName == r.Body.Close().Error(){
+	// 		json.NewEncoder(w).Encode("Course already present")
+	// 	}
+	// }
 
 	//generate unique id in string and append course into Courses
 	rand.Seed(time.Now().UnixNano())
