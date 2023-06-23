@@ -40,21 +40,21 @@ func main() {
 
 	//seeding
 	courses = append(courses, Course{
-		CourseId: "3",
-		CourseName: "Flutter",
+		CourseId:    "3",
+		CourseName:  "Flutter",
 		CoursePrice: 699,
 		Author: &Author{
 			Fullname: "Yuvraj Singh",
-			Website: "learnflutter.com",
+			Website:  "learnflutter.com",
 		},
 	})
 	courses = append(courses, Course{
-		CourseId: "4",
-		CourseName: "Android",
+		CourseId:    "4",
+		CourseName:  "Android",
 		CoursePrice: 499,
 		Author: &Author{
 			Fullname: "Yuvraj Singh",
-			Website: "learnandroid.com",
+			Website:  "learnandroid.com",
 		},
 	})
 
@@ -67,7 +67,7 @@ func main() {
 	r.HandleFunc("/course/{id}", deleteOneCourse).Methods("DELETE")
 
 	//listen to a port
-	log.Fatal(http.ListenAndServe(":4000",r))
+	log.Fatal(http.ListenAndServe(":4000", r))
 }
 
 //controllers - file
@@ -118,22 +118,24 @@ func createOneCourse(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	// //check if title is already present
-	// for _,course := range courses {
-	// 	if course.CourseName == r.Body.Close().Error(){
-	// 		json.NewEncoder(w).Encode("Course already present")
-	// 	}
-	// }
-
-	//generate unique id in string and append course into Courses
-	rand.Seed(time.Now().UnixNano())
-	course.CourseId = strconv.Itoa(rand.Intn(100))
-	courses = append(courses, course)
-	json.NewEncoder(w).Encode(course)
+	//check if title is already present
+	for _, courseTemp := range courses {
+		if courseTemp.CourseName == course.CourseName {
+			json.NewEncoder(w).Encode("Course already present")
+			return
+		} else {
+			//generate unique id in string and append course into Courses
+			rand.Seed(time.Now().UnixNano())
+			course.CourseId = strconv.Itoa(rand.Intn(100))
+			courses = append(courses, course)
+			json.NewEncoder(w).Encode(course)
+			return
+		}
+	}
 	return
 }
 
-func updateOneCourse(w http.ResponseWriter, r *http.Request){
+func updateOneCourse(w http.ResponseWriter, r *http.Request) {
 	fmt.Println("Update one course")
 	w.Header().Set("Content-Type", "application/json")
 
@@ -156,7 +158,7 @@ func updateOneCourse(w http.ResponseWriter, r *http.Request){
 	}
 }
 
-func deleteOneCourse(w http.ResponseWriter, r *http.Request){
+func deleteOneCourse(w http.ResponseWriter, r *http.Request) {
 	fmt.Println("Delete one course")
 	w.Header().Set("Content-Type", "application/json")
 
@@ -170,4 +172,6 @@ func deleteOneCourse(w http.ResponseWriter, r *http.Request){
 			break
 		}
 	}
+	json.NewEncoder(w).Encode("This course is deleted")
+
 }
