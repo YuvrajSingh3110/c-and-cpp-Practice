@@ -6,6 +6,8 @@ import (
 	"log"
 
 	"github.com/YuvrajSingh3110/mongoAPI/model"
+	"go.mongodb.org/mongo-driver/bson"
+	"go.mongodb.org/mongo-driver/bson/primitive"
 	"go.mongodb.org/mongo-driver/mongo"
 	"go.mongodb.org/mongo-driver/mongo/options"
 )
@@ -45,4 +47,39 @@ func insertOneMovie(movie model.Netflix){
 		log.Fatal(err)
 	}
 	fmt.Println("Inserted one movie in db with id: ", inserted.InsertedID)
+}
+
+//update 1 record
+func updateOneMovie(movieId string)  {
+	id, _ :=primitive.ObjectIDFromHex(movieId)
+	filter := bson.M{"_id": id}   //bson.M is a non-ordered representaion
+	update := bson.M{"$set": bson.M{"watched": true}}
+	
+	result, err := collection.UpdateOne(context.Background(), filter, update)
+	if err != nil {
+		log.Fatal(err)
+	}
+	fmt.Println("Modified count: ", result.ModifiedCount)
+}
+
+//delete 1 record
+func deleteOneMovie(movieId string)  {
+	id, _ := primitive.ObjectIDFromHex(movieId)
+	filter := bson.M{"_id": id}
+
+	deleteCount, err := collection.DeleteOne(context.Background(), filter)
+	if err != nil {
+		log.Fatal(err)
+	}
+	fmt.Println("Movie got deleted with delete count: ",deleteCount)
+}
+
+//delete all records
+func deleteAllMovie()  {
+	//bson.D is an ordered representaion. {} means no id is given and everything is selected for deletion
+	deleteResult, err := collection.DeleteMany(context.Background(), bson.D{{}})
+	if err != nil {
+		log.Fatal(err)
+	}
+	fmt.Println("Records deleted with delete count: ", deleteResult.DeletedCount)
 }
