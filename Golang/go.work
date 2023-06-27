@@ -25,4 +25,7 @@ use (
 	./22myModules
 	./23buildAPI
 	./24mongoAPI
+	./25goroutines
+	./26mutexAndAwaitGroups
+	./27channels
 )
